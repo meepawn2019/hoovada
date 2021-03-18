@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header/Header';
-import { Modal, Button } from 'react-bootstrap';
 import ModalBody from '../components/Modal/ModalBody';
 
 export default function Home() {
@@ -38,7 +37,8 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
       </main>
-      <Modal show={show} onHide={handleClose}>
+      <ModalBody show={show} handleClose={handleClose} modalType={modalType} modalTitle={modalTitle} />
+      {/* <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
@@ -47,11 +47,11 @@ export default function Home() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" type="submit" onClick={handleClose}>
             Save Changes
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
 
     </div>
   )
