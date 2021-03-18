@@ -3,13 +3,22 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header/Header';
 import { Modal, Button } from 'react-bootstrap';
+import ModalBody from '../components/Modal/ModalBody';
 
 export default function Home() {
 
   const [show, setShow] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalType, setModalType] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const onShowPostQuestionModal = () => {
+    setModalTitle('Đặt câu hỏi?');
+    setModalType('postQuestion');
+    setShow(true);
+  }
 
 
   return (
@@ -18,7 +27,7 @@ export default function Home() {
         <title>Hoovada</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header onShowModal={handleShow} />
+      <Header onShowModal={handleShow} onShowPostQuestionModal={onShowPostQuestionModal} />
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -31,9 +40,9 @@ export default function Home() {
       </main>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>{(modalType === 'postQuestion') && <ModalBody modalType={modalType} />}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

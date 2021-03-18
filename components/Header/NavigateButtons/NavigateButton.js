@@ -6,7 +6,7 @@ export default function NavigateButton(props) {
     return (
         <div className="my-2 my-lg-0 d-flex align-items-center justify-content-between">
             <div className='d-flex'>
-                <button className={`buttonMain ${styles['button--main']} mr-2`} onClick={props.onShowModal}>
+                <button className={`buttonMain ${styles['button--main']} mr-2`} onClick={props.onShowPostQuestionModal}>
                     Đặt câu hỏi
                 </button>
                 <button className={`buttonMain ${styles['button--light']} mr-3`}>
